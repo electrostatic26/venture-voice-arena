@@ -56,58 +56,64 @@ const CompetitionSection = () => {
   ];
 
   return (
-    <section id="competition" className="py-16 bg-secondary/30">
-      <div className="container mx-auto px-6">
+    <section id="competition" className="py-20 bg-secondary/10 relative overflow-hidden">
+      {/* Futuristic background elements */}
+      <div className="absolute top-1/4 right-10 w-40 h-40 bg-accent/10 rounded-full blur-2xl animate-float"></div>
+      <div className="absolute bottom-1/4 left-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-float" style={{animationDelay: '3s'}}></div>
+      
+      <div className="container mx-auto px-6 relative">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Business Competitions</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-display font-bold mb-6 text-foreground bg-gradient-neon bg-clip-text text-transparent animate-gradient-shift bg-300%">
+            Business Competitions
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
             Participate in prestigious business competitions and showcase your innovative ideas to industry leaders.
           </p>
         </div>
 
         {/* Active Competitions */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-8 text-foreground">Active Competitions</h3>
+        <div className="mb-20">
+          <h3 className="text-3xl font-display font-semibold mb-10 text-foreground">Active Competitions</h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {competitions.map((competition, index) => (
-              <Card key={index} className={`shadow-card hover:shadow-elegant transition-all duration-300 ${competition.featured ? 'ring-2 ring-primary bg-gradient-card' : 'bg-card'}`}>
+              <Card key={index} className={`shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 backdrop-blur-glass border border-border/50 hover:border-primary/50 ${competition.featured ? 'ring-2 ring-primary/50 bg-gradient-glass shadow-neon' : 'bg-gradient-glass'}`}>
                 <CardHeader>
-                  <div className="flex justify-between items-start mb-3">
-                    <Badge variant={competition.status === 'Open' ? 'default' : 'secondary'}>
+                  <div className="flex justify-between items-start mb-4">
+                    <Badge variant={competition.status === 'Open' ? 'default' : 'secondary'} className="bg-gradient-primary text-primary-foreground border-0 shadow-neon backdrop-blur-sm">
                       {competition.status}
                     </Badge>
                     {competition.featured && (
-                      <Badge className="bg-primary-glow text-primary-foreground">
+                      <Badge className="bg-gradient-to-r from-accent to-accent-glow text-accent-foreground border-0 shadow-neon backdrop-blur-sm animate-glow-pulse">
                         Featured
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-xl text-foreground">{competition.title}</CardTitle>
+                  <CardTitle className="text-xl font-display text-foreground">{competition.title}</CardTitle>
                 </CardHeader>
                 
                 <CardContent>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="text-muted-foreground mb-8 font-light leading-relaxed">
                     {competition.description}
                   </p>
                   
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center gap-2 text-sm">
-                      <DollarSign className="w-4 h-4 text-primary" />
-                      <span>Prize: <strong>{competition.prize}</strong></span>
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center gap-3 text-sm bg-secondary/30 p-3 rounded-lg backdrop-blur-sm">
+                      <DollarSign className="w-5 h-5 text-primary" />
+                      <span>Prize: <strong className="text-primary">{competition.prize}</strong></span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Users className="w-4 h-4 text-primary" />
-                      <span>Participants: {competition.participants}</span>
+                    <div className="flex items-center gap-3 text-sm bg-secondary/30 p-3 rounded-lg backdrop-blur-sm">
+                      <Users className="w-5 h-5 text-primary" />
+                      <span>Participants: <strong>{competition.participants}</strong></span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Calendar className="w-4 h-4 text-primary" />
-                      <span>Deadline: {competition.deadline}</span>
+                    <div className="flex items-center gap-3 text-sm bg-secondary/30 p-3 rounded-lg backdrop-blur-sm">
+                      <Calendar className="w-5 h-5 text-primary" />
+                      <span>Deadline: <strong>{competition.deadline}</strong></span>
                     </div>
                   </div>
                   
                   <Button 
-                    className="w-full" 
+                    className={`w-full transition-all duration-300 ${competition.featured ? 'bg-gradient-primary hover:shadow-neon' : 'border-primary/50 hover:bg-primary/10 hover:border-primary'}`}
                     disabled={competition.status !== 'Open'}
                     variant={competition.featured ? 'default' : 'outline'}
                   >
@@ -121,22 +127,22 @@ const CompetitionSection = () => {
 
         {/* Previous Winners */}
         <div>
-          <h3 className="text-2xl font-semibold mb-8 text-foreground flex items-center gap-2">
-            <Trophy className="w-6 h-6 text-primary" />
+          <h3 className="text-3xl font-display font-semibold mb-10 text-foreground flex items-center gap-3">
+            <Trophy className="w-8 h-8 text-primary animate-glow-pulse" />
             Previous Winners
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {winners.map((winner, index) => (
-              <Card key={index} className="bg-card shadow-card">
+              <Card key={index} className="bg-gradient-glass backdrop-blur-glass border border-border/50 shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-1">
                 <CardHeader>
-                  <Badge className="w-fit mb-2 bg-primary text-primary-foreground">
+                  <Badge className="w-fit mb-3 bg-gradient-primary text-primary-foreground border-0 shadow-neon backdrop-blur-sm">
                     {winner.category}
                   </Badge>
-                  <CardTitle className="text-lg text-foreground">{winner.name}</CardTitle>
-                  <p className="text-sm text-primary font-medium">{winner.achievement}</p>
+                  <CardTitle className="text-lg font-display text-foreground">{winner.name}</CardTitle>
+                  <p className="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full inline-block">{winner.achievement}</p>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{winner.description}</p>
+                  <p className="text-muted-foreground font-light leading-relaxed">{winner.description}</p>
                 </CardContent>
               </Card>
             ))}

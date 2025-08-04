@@ -50,11 +50,17 @@ const NewsSection = () => {
   ];
 
   return (
-    <section id="news" className="py-16 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Latest Business News</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+    <section id="news" className="py-20 bg-background relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-accent/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-6 relative">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-display font-bold mb-6 text-foreground bg-gradient-neon bg-clip-text text-transparent animate-gradient-shift bg-300%">
+            Latest Business News
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
             Stay informed with our comprehensive coverage of business trends, market analysis, and industry insights.
           </p>
         </div>

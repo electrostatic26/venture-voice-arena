@@ -8,50 +8,60 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Professional business theme */
-    --background: 0 0% 100%;
-    --foreground: 216 19% 16%;
+    /* Futuristic dark theme */
+    --background: 220 27% 4%;
+    --foreground: 220 27% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 216 19% 16%;
+    --card: 220 27% 6%;
+    --card-foreground: 220 27% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 216 19% 16%;
+    --popover: 220 27% 5%;
+    --popover-foreground: 220 27% 95%;
 
-    /* Professional navy blue primary */
-    --primary: 217 91% 25%;
-    --primary-foreground: 0 0% 98%;
-    --primary-glow: 217 100% 35%;
+    /* Cyan-blue futuristic primary */
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 27% 4%;
+    --primary-glow: 195 100% 60%;
+    --primary-dark: 195 100% 35%;
 
-    /* Elegant secondary colors */
-    --secondary: 217 32% 93%;
-    --secondary-foreground: 217 91% 25%;
+    /* Glass morphism secondary */
+    --secondary: 220 27% 12%;
+    --secondary-foreground: 220 27% 90%;
 
-    --muted: 217 32% 93%;
-    --muted-foreground: 217 19% 38%;
+    --muted: 220 27% 10%;
+    --muted-foreground: 220 15% 65%;
 
-    --accent: 217 100% 50%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 290 100% 50%;
+    --accent-foreground: 220 27% 95%;
+    --accent-glow: 290 100% 60%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 27% 95%;
 
-    --border: 217 32% 91%;
-    --input: 217 32% 91%;
-    --ring: 217 91% 25%;
+    --border: 220 27% 18%;
+    --input: 220 27% 12%;
+    --ring: 195 100% 50%;
 
-    /* Business gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 25%), hsl(217 100% 35%));
-    --gradient-hero: linear-gradient(135deg, hsl(217 91% 25%) 0%, hsl(217 100% 35%) 50%, hsl(217 91% 40%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(217 32% 98%) 100%);
+    /* Futuristic gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%) 0%, hsl(290 100% 50%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 27% 4%) 0%, hsl(195 100% 20%) 50%, hsl(290 100% 20%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220 27% 6% / 0.8) 0%, hsl(195 100% 50% / 0.05) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(220 27% 15% / 0.8) 0%, hsl(220 27% 8% / 0.4) 100%);
+    --gradient-neon: linear-gradient(90deg, hsl(195 100% 50%) 0%, hsl(290 100% 50%) 50%, hsl(195 100% 50%) 100%);
     
-    /* Professional shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(217 91% 25% / 0.2);
-    --shadow-card: 0 4px 20px -4px hsl(217 91% 25% / 0.1);
-    --shadow-glow: 0 0 40px hsl(217 100% 35% / 0.3);
+    /* Futuristic shadows and glows */
+    --shadow-neon: 0 0 30px hsl(195 100% 50% / 0.5), 0 0 60px hsl(195 100% 50% / 0.2);
+    --shadow-glass: 0 8px 32px hsl(220 27% 4% / 0.4);
+    --shadow-elevated: 0 20px 40px hsl(220 27% 4% / 0.6);
+    --glow-text: 0 0 20px hsl(195 100% 50% / 0.6);
 
-    /* Smooth transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Glass morphism */
+    --glass-bg: hsl(220 27% 15% / 0.1);
+    --glass-border: hsl(220 27% 30% / 0.2);
+    
+    /* Smooth futuristic transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-glow: all 0.3s ease;
 
     --radius: 0.5rem;
 

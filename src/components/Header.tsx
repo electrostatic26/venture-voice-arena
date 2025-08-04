@@ -8,30 +8,32 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gradient-hero text-primary-foreground shadow-elegant sticky top-0 z-50">
+    <header className="bg-gradient-glass text-foreground shadow-glass backdrop-blur-glass border-b border-border/50 sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary-foreground rounded-lg flex items-center justify-center">
-              <span className="text-primary font-bold text-lg">B</span>
+          <div className="flex items-center space-x-3 group">
+            <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-neon animate-glow-pulse">
+              <span className="font-display font-bold text-lg text-primary-foreground">B</span>
             </div>
-            <h1 className="text-2xl font-bold">BusinessToday</h1>
+            <h1 className="text-2xl font-display font-bold bg-gradient-neon bg-clip-text text-transparent animate-gradient-shift bg-300%">
+              BusinessToday
+            </h1>
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('news')}
-              className="hover:text-primary-glow transition-colors"
+              className="relative font-medium hover:text-primary transition-all duration-300 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
             >
               News
             </button>
             <button 
               onClick={() => scrollToSection('competition')}
-              className="hover:text-primary-glow transition-colors"
+              className="relative font-medium hover:text-primary transition-all duration-300 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
             >
               Competition
             </button>
-            <Button variant="secondary" size="sm">
+            <Button variant="default" size="sm" className="bg-gradient-primary hover:shadow-neon transition-all duration-300">
               Subscribe
             </Button>
           </nav>
