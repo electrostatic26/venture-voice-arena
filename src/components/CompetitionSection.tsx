@@ -6,31 +6,13 @@ import { Trophy, Calendar, Users, DollarSign } from "lucide-react";
 const CompetitionSection = () => {
   const competitions = [
     {
-      title: "Global Startup Pitch Challenge 2024",
+      title: "Global Startup Pitch Challenge 2025",
       description: "Present your innovative business idea to a panel of leading investors and industry experts. Win funding and mentorship opportunities.",
       prize: "$100,000",
       participants: "500+",
-      deadline: "March 15, 2024",
+      deadline: "March 15, 2025",
       status: "Open",
       featured: true
-    },
-    {
-      title: "Sustainable Business Innovation Award",
-      description: "Showcase solutions that drive positive environmental and social impact while maintaining profitability and scalability.",
-      prize: "$50,000",
-      participants: "300+",
-      deadline: "April 20, 2024",
-      status: "Open",
-      featured: false
-    },
-    {
-      title: "FinTech Disruption Competition",
-      description: "Develop cutting-edge financial technology solutions that address real-world challenges in banking, payments, or investment.",
-      prize: "$75,000",
-      participants: "450+",
-      deadline: "May 10, 2024",
-      status: "Coming Soon",
-      featured: false
     }
   ];
 
@@ -74,20 +56,19 @@ const CompetitionSection = () => {
 
         {/* Active Competitions */}
         <div className="mb-20">
-          <h3 className="text-3xl font-display font-semibold mb-10 text-foreground">Active Competitions</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <h3 className="text-3xl font-display font-semibold mb-10 text-foreground">Active Competition</h3>
+          <div className="flex justify-center">
+            <div className="max-w-md w-full">
             {competitions.map((competition, index) => (
-              <Card key={index} className={`shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 backdrop-blur-glass border border-border/50 hover:border-primary/50 ${competition.featured ? 'ring-2 ring-primary/50 bg-gradient-glass shadow-neon' : 'bg-gradient-glass'}`}>
+              <Card key={index} className="shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 backdrop-blur-glass border border-border/50 hover:border-primary/50 ring-2 ring-primary/50 bg-gradient-glass shadow-neon">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-4">
-                    <Badge variant={competition.status === 'Open' ? 'default' : 'secondary'} className="bg-gradient-primary text-primary-foreground border-0 shadow-neon backdrop-blur-sm">
+                    <Badge className="bg-gradient-primary text-primary-foreground border-0 shadow-neon backdrop-blur-sm">
                       {competition.status}
                     </Badge>
-                    {competition.featured && (
-                      <Badge className="bg-gradient-to-r from-accent to-accent-glow text-accent-foreground border-0 shadow-neon backdrop-blur-sm animate-glow-pulse">
-                        Featured
-                      </Badge>
-                    )}
+                    <Badge className="bg-gradient-to-r from-accent to-accent-glow text-accent-foreground border-0 shadow-neon backdrop-blur-sm animate-glow-pulse">
+                      Featured
+                    </Badge>
                   </div>
                   <CardTitle className="text-xl font-display text-foreground">{competition.title}</CardTitle>
                 </CardHeader>
@@ -113,15 +94,15 @@ const CompetitionSection = () => {
                   </div>
                   
                   <Button 
-                    className={`w-full transition-all duration-300 ${competition.featured ? 'bg-gradient-primary hover:shadow-neon' : 'border-primary/50 hover:bg-primary/10 hover:border-primary'}`}
-                    disabled={competition.status !== 'Open'}
-                    variant={competition.featured ? 'default' : 'outline'}
+                    className="w-full transition-all duration-300 bg-gradient-primary hover:shadow-neon"
+                    variant="default"
                   >
-                    {competition.status === 'Open' ? 'Apply Now' : 'Coming Soon'}
+                    Apply Now
                   </Button>
                 </CardContent>
               </Card>
             ))}
+            </div>
           </div>
         </div>
 
