@@ -2,6 +2,11 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/futuristic-hero.jpg";
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative bg-gradient-hero text-foreground py-24 overflow-hidden">
       <div className="absolute inset-0 opacity-40">
@@ -31,10 +36,19 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up" style={{animationDelay: '0.4s'}}>
-          <Button size="lg" className="bg-gradient-primary hover:shadow-neon transition-all duration-300 text-lg px-10 py-4 font-medium">
+          <Button 
+            size="lg" 
+            className="bg-gradient-primary hover:shadow-neon transition-all duration-300 text-lg px-10 py-4 font-medium"
+            onClick={() => scrollToSection('news')}
+          >
             Read Latest News
           </Button>
-          <Button size="lg" variant="outline" className="text-lg px-10 py-4 font-medium border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary hover:shadow-neon transition-all duration-300">
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="text-lg px-10 py-4 font-medium border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary hover:shadow-neon transition-all duration-300"
+            onClick={() => scrollToSection('competition')}
+          >
             Join Competition
           </Button>
         </div>
