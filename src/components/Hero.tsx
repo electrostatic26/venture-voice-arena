@@ -18,9 +18,9 @@ const Hero = () => {
       <div className="absolute bottom-20 right-10 w-24 h-24 bg-accent/20 rounded-full blur-xl animate-float" style={{animationDelay: '2s'}}></div>
       
       <div className="relative container mx-auto px-6 text-center">
-        <h1 className="text-6xl md:text-7xl font-display font-bold mb-8 leading-tight animate-slide-up">
+        <h1 className="text-6xl md:text-7xl font-display font-bold mb-8 leading-tight animate-slide-up text-foreground">
           Stay Ahead in
-          <span className="block bg-gradient-neon bg-clip-text text-transparent animate-gradient-shift bg-300% drop-shadow-lg">
+          <span className="block text-primary drop-shadow-lg">
             Business Today
           </span>
         </h1>

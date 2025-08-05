@@ -46,7 +46,7 @@ const CompetitionSection = () => {
       <div className="container mx-auto px-6 relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-display font-bold mb-6 text-foreground bg-gradient-neon bg-clip-text text-transparent animate-gradient-shift bg-300%">
+          <h2 className="text-5xl font-display font-bold mb-6 text-foreground">
             Business Competitions
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">

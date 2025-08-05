@@ -57,7 +57,7 @@ const NewsSection = () => {
       
       <div className="container mx-auto px-6 relative">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-display font-bold mb-6 text-foreground bg-gradient-neon bg-clip-text text-transparent animate-gradient-shift bg-300%">
+          <h2 className="text-5xl font-display font-bold mb-6 text-foreground">
             Latest Business News
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">

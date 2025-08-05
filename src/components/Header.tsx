@@ -15,7 +15,7 @@ const Header = () => {
             <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-neon animate-glow-pulse">
               <span className="font-display font-bold text-lg text-primary-foreground">B</span>
             </div>
-            <h1 className="text-2xl font-display font-bold bg-gradient-neon bg-clip-text text-transparent animate-gradient-shift bg-300%">
+            <h1 className="text-2xl font-display font-bold text-foreground">
               BusinessToday
             </h1>
           </div>
