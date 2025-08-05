@@ -1,7 +1,69 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [webhookUrl, setWebhookUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showWebhookInput, setShowWebhookInput] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter your email address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!webhookUrl) {
+      setShowWebhookInput(true);
+      toast({
+        title: "Webhook Required",
+        description: "Please enter your Zapier webhook URL to connect this form to your email service",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          email: email,
+          timestamp: new Date().toISOString(),
+          source: "BusinessToday Newsletter",
+        }),
+      });
+
+      toast({
+        title: "Subscribed!",
+        description: "Thank you for subscribing to our newsletter. Check your Zapier to confirm the integration worked.",
+      });
+      
+      setEmail("");
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      toast({
+        title: "Error",
+        description: "Failed to subscribe. Please check your webhook URL and try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <footer className="bg-gradient-primary text-foreground relative overflow-hidden">
       {/* Futuristic background elements */}
@@ -28,15 +90,37 @@ const Footer = () => {
             {/* Newsletter Signup */}
             <div className="space-y-4">
               <h4 className="font-display font-semibold text-lg">Stay Updated</h4>
-              <div className="flex gap-3 max-w-sm">
+              
+              {showWebhookInput && (
+                <div className="mb-4">
+                  <Input 
+                    value={webhookUrl}
+                    onChange={(e) => setWebhookUrl(e.target.value)}
+                    placeholder="Enter your Zapier webhook URL" 
+                    className="bg-gradient-glass backdrop-blur-glass border-border/50 text-foreground placeholder:text-muted-foreground mb-2"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Create a Zap with a webhook trigger to connect this form to your email service
+                  </p>
+                </div>
+              )}
+              
+              <form onSubmit={handleSubscribe} className="flex gap-3 max-w-sm">
                 <Input 
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email" 
                   className="bg-gradient-glass backdrop-blur-glass border-border/50 text-foreground placeholder:text-muted-foreground"
                 />
-                <Button className="bg-gradient-primary hover:shadow-neon transition-all duration-300 border-0">
-                  Subscribe
+                <Button 
+                  type="submit" 
+                  disabled={isLoading}
+                  className="bg-gradient-primary hover:shadow-neon transition-all duration-300 border-0"
+                >
+                  {isLoading ? "..." : "Subscribe"}
                 </Button>
-              </div>
+              </form>
             </div>
           </div>
           
