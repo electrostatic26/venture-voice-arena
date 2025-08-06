@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Calendar, Users, DollarSign } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CompetitionSection = () => {
   const competitions = [
@@ -94,10 +95,11 @@ const CompetitionSection = () => {
                   </div>
                   
                   <Button 
+                    asChild
                     className="w-full transition-all duration-300 bg-gradient-primary hover:shadow-neon"
                     variant="default"
                   >
-                    Apply Now
+                    <Link to="/competition">Apply Now</Link>
                   </Button>
                 </CardContent>
               </Card>
