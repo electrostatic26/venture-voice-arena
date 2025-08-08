@@ -24,15 +24,15 @@ const Hero = () => {
       
       <div className="relative container mx-auto px-6 text-center">
         <h1 className="text-6xl md:text-7xl font-display font-bold mb-8 leading-tight animate-slide-up text-foreground">
-          Stay Ahead in
+          Master Your
           <span className="block text-primary drop-shadow-lg">
-            Business Today
+            Financial Future
           </span>
         </h1>
         
         <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-muted-foreground font-light animate-slide-up" style={{animationDelay: '0.2s'}}>
-          Get the latest business insights, market analysis, and competition updates 
-          that matter to your success in the digital age.
+          Get the latest financial insights, market analysis, and investment strategies 
+          to grow your wealth and secure your financial future.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up" style={{animationDelay: '0.4s'}}>
@@ -41,7 +41,7 @@ const Hero = () => {
             className="bg-gradient-primary hover:shadow-neon transition-all duration-300 text-lg px-10 py-4 font-medium"
             onClick={() => scrollToSection('news')}
           >
-            Read Latest News
+            Read Finance News
           </Button>
           <Button 
             size="lg" 

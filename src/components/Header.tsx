@@ -26,10 +26,10 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3 group">
             <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-neon animate-glow-pulse">
-              <span className="font-display font-bold text-lg text-primary-foreground">B</span>
+              <span className="font-display font-bold text-lg text-primary-foreground">F</span>
             </div>
             <h1 className="text-2xl font-display font-bold text-foreground">
-              BusinessToday
+              FinanceWizz
             </h1>
           </div>
           
