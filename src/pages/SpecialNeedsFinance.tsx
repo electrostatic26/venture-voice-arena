@@ -2,9 +2,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Calculator, Coins, CreditCard, PiggyBank, Trophy } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { BookOpen, Calculator, Coins, CreditCard, PiggyBank, Trophy, ArrowLeft } from "lucide-react";
 
 const SpecialNeedsFinance = () => {
+  const navigate = useNavigate();
   const articles = [
     {
       title: "What is Money?",
@@ -64,6 +66,17 @@ const SpecialNeedsFinance = () => {
       <Header />
       
       <main className="container mx-auto px-4 py-8">
+        <div className="mb-6">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Home
+          </Button>
+        </div>
+
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Money Learning for Everyone
