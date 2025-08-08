@@ -69,7 +69,10 @@ const SpecialNeedsFinance = () => {
         <div className="mb-6">
           <Button 
             variant="ghost" 
-            onClick={() => navigate("/")}
+            onClick={() => {
+              navigate("/");
+              window.scrollTo(0, 0);
+            }}
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="w-4 h-4" />
