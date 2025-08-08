@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MoneyCountingGame from "@/components/MoneyCountingGame";
+import ShoppingAdventureGame from "@/components/ShoppingAdventureGame";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,7 @@ import { useState } from "react";
 const SpecialNeedsFinance = () => {
   const navigate = useNavigate();
   const [gameOpen, setGameOpen] = useState(false);
+  const [shoppingGameOpen, setShoppingGameOpen] = useState(false);
   const articles = [
     {
       title: "What is Money?",
@@ -157,6 +159,8 @@ const SpecialNeedsFinance = () => {
                     onClick={() => {
                       if (index === 0) { // Money Matching Game
                         setGameOpen(true);
+                      } else if (index === 1) { // Shopping Adventure
+                        setShoppingGameOpen(true);
                       }
                     }}
                   >
@@ -182,6 +186,7 @@ const SpecialNeedsFinance = () => {
       </main>
 
       <MoneyCountingGame open={gameOpen} onClose={() => setGameOpen(false)} />
+      <ShoppingAdventureGame open={shoppingGameOpen} onClose={() => setShoppingGameOpen(false)} />
       <Footer />
     </div>
   );
