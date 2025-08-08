@@ -96,15 +96,10 @@ const MoneyCountingGame = ({ open, onClose }: MoneyCountingGameProps) => {
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <div className="flex items-center justify-between">
-            <DialogTitle className="flex items-center gap-2">
-              <Coins className="w-5 h-5 text-primary" />
-              Money Counting Game
-            </DialogTitle>
-            <Button variant="ghost" size="sm" onClick={onClose}>
-              <X className="w-4 h-4" />
-            </Button>
-          </div>
+          <DialogTitle className="flex items-center gap-2">
+            <Coins className="w-5 h-5 text-primary" />
+            Money Counting Game
+          </DialogTitle>
         </DialogHeader>
 
         {!gameCompleted ? (
