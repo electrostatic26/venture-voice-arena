@@ -78,9 +78,9 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-glass backdrop-blur-glass rounded-xl flex items-center justify-center shadow-neon border border-border/30">
                 <span className="font-display font-bold text-lg text-primary">B</span>
               </div>
-              <h3 className="text-3xl font-display font-bold text-foreground">
-                BusinessToday
-              </h3>
+            <h3 className="text-3xl font-display font-bold text-black">
+              BusinessToday
+            </h3>
             </div>
             <p className="text-muted-foreground mb-8 max-w-md font-light leading-relaxed">
               Your trusted source for business news, market insights, and competition opportunities. 
