@@ -8,6 +8,7 @@ const SpecialNeedsSection = () => {
 
   const handleLearnMore = () => {
     navigate("/special-needs-finance");
+    window.scrollTo(0, 0);
   };
 
   return (
