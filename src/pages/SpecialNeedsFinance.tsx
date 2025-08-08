@@ -1,12 +1,15 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MoneyCountingGame from "@/components/MoneyCountingGame";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, Calculator, Coins, CreditCard, PiggyBank, Trophy, ArrowLeft } from "lucide-react";
+import { useState } from "react";
 
 const SpecialNeedsFinance = () => {
   const navigate = useNavigate();
+  const [gameOpen, setGameOpen] = useState(false);
   const articles = [
     {
       title: "What is Money?",
@@ -149,7 +152,14 @@ const SpecialNeedsFinance = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button className="w-full">
+                  <Button 
+                    className="w-full"
+                    onClick={() => {
+                      if (index === 0) { // Money Matching Game
+                        setGameOpen(true);
+                      }
+                    }}
+                  >
                     Play Game
                   </Button>
                 </CardContent>
@@ -171,6 +181,7 @@ const SpecialNeedsFinance = () => {
         </section>
       </main>
 
+      <MoneyCountingGame open={gameOpen} onClose={() => setGameOpen(false)} />
       <Footer />
     </div>
   );
