@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -32,6 +35,12 @@ const Header = () => {
               className="relative font-medium hover:text-primary transition-all duration-300 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
             >
               Competition
+            </button>
+            <button 
+              onClick={() => navigate('/special-needs-finance')}
+              className="relative font-medium hover:text-primary transition-all duration-300 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Special Needs
             </button>
             <Button variant="default" size="sm" className="bg-gradient-primary hover:shadow-neon transition-all duration-300">
               Subscribe
