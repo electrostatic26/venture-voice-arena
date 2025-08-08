@@ -79,7 +79,12 @@ const NewsSection = () => {
             size="lg"
             className="bg-gradient-primary hover:shadow-neon transition-all duration-300 text-lg px-10 py-4 font-medium"
           >
-            <Link to="/finance-topics">Read More Finance Articles</Link>
+            <Link 
+              to="/finance-topics" 
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              Read More Finance Articles
+            </Link>
           </Button>
         </div>
       </div>
