@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Calendar, Users, DollarSign } from "lucide-react";
+import { Calendar, Users, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CompetitionSection = () => {
@@ -17,26 +17,6 @@ const CompetitionSection = () => {
     }
   ];
 
-  const winners = [
-    {
-      name: "EcoLogistics Pro",
-      category: "Supply Chain Innovation",
-      achievement: "Winner - Green Business Award 2023",
-      description: "Revolutionary AI-powered logistics platform reducing carbon footprint by 40%"
-    },
-    {
-      name: "HealthTech Solutions",
-      category: "Healthcare Technology",
-      achievement: "Winner - Digital Health Challenge 2023",
-      description: "Telemedicine platform improving rural healthcare access for 100,000+ patients"
-    },
-    {
-      name: "SmartRetail Analytics",
-      category: "Retail Technology",
-      achievement: "Winner - Retail Innovation Prize 2023",
-      description: "AI-driven retail analytics platform increasing sales by 25% for small businesses"
-    }
-  ];
 
   return (
     <section id="competition" className="py-20 bg-secondary/10 relative overflow-hidden">
@@ -108,29 +88,6 @@ const CompetitionSection = () => {
           </div>
         </div>
 
-        {/* Previous Winners */}
-        <div>
-          <h3 className="text-3xl font-display font-semibold mb-10 text-foreground flex items-center gap-3">
-            <Trophy className="w-8 h-8 text-primary animate-glow-pulse" />
-            Previous Winners
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {winners.map((winner, index) => (
-              <Card key={index} className="bg-gradient-glass backdrop-blur-glass border border-border/50 shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-1">
-                <CardHeader>
-                  <Badge className="w-fit mb-3 bg-gradient-primary text-primary-foreground border-0 shadow-neon backdrop-blur-sm">
-                    {winner.category}
-                  </Badge>
-                  <CardTitle className="text-lg font-display text-foreground">{winner.name}</CardTitle>
-                  <p className="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full inline-block">{winner.achievement}</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground font-light leading-relaxed">{winner.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
