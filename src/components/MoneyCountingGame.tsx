@@ -140,16 +140,18 @@ const MoneyCountingGame = ({ open, onClose }: MoneyCountingGameProps) => {
                     let buttonVariant: "default" | "outline" | "destructive" | "secondary" = "outline";
                     let buttonClass = "";
 
-                    if (showResult && selectedAnswer === option) {
-                      if (option === questions[currentQuestion].correctAnswer) {
+                    if (showResult) {
+                      if (selectedAnswer === option) {
+                        if (option === questions[currentQuestion].correctAnswer) {
+                          buttonVariant = "default";
+                          buttonClass = "bg-green-500 hover:bg-green-600 text-white";
+                        } else {
+                          buttonVariant = "destructive";
+                        }
+                      } else if (option === questions[currentQuestion].correctAnswer) {
                         buttonVariant = "default";
                         buttonClass = "bg-green-500 hover:bg-green-600 text-white";
-                      } else {
-                        buttonVariant = "destructive";
                       }
-                    } else if (showResult && option === questions[currentQuestion].correctAnswer) {
-                      buttonVariant = "default";
-                      buttonClass = "bg-green-500 hover:bg-green-600 text-white";
                     }
 
                     return (
