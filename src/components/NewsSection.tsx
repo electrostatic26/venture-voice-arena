@@ -1,4 +1,6 @@
 import ArticleCard from "./ArticleCard";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const NewsSection = () => {
   const articles = [
@@ -69,6 +71,16 @@ const NewsSection = () => {
           {articles.map((article, index) => (
             <ArticleCard key={index} {...article} />
           ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <Button 
+            asChild
+            size="lg"
+            className="bg-gradient-primary hover:shadow-neon transition-all duration-300 text-lg px-10 py-4 font-medium"
+          >
+            <Link to="/finance-topics">Read More Finance Articles</Link>
+          </Button>
         </div>
       </div>
     </section>
