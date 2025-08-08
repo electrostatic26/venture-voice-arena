@@ -149,7 +149,7 @@ const Footer = () => {
         
         <div className="border-t border-border/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm font-light">
-            © 2024 BusinessToday. All rights reserved.
+            © 2024 FinanceWizz. All rights reserved.
           </p>
           <div className="flex space-x-8 text-sm text-muted-foreground mt-4 md:mt-0">
             <a href="#" className="hover:text-primary transition-all duration-300">Privacy Policy</a>
