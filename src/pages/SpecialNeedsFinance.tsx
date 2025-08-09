@@ -2,16 +2,18 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MoneyCountingGame from "@/components/MoneyCountingGame";
 import ShoppingAdventureGame from "@/components/ShoppingAdventureGame";
+import CoinCatcherGame from "@/components/CoinCatcherGame";
 import BestScoreSection from "@/components/BestScoreSection";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, Calculator, Coins, CreditCard, PiggyBank, Trophy, ArrowLeft } from "lucide-react";
+import { BookOpen, Calculator, Coins, CreditCard, PiggyBank, Trophy, ArrowLeft, Gamepad2 } from "lucide-react";
 import { useState } from "react";
 const SpecialNeedsFinance = () => {
   const navigate = useNavigate();
   const [gameOpen, setGameOpen] = useState(false);
   const [shoppingGameOpen, setShoppingGameOpen] = useState(false);
+  const [coinCatcherOpen, setCoinCatcherOpen] = useState(false);
   const articles = [{
     title: "What is Money?",
     description: "Learn about coins, bills, and why we use money every day.",
@@ -151,6 +153,40 @@ const SpecialNeedsFinance = () => {
           </div>
         </section>
 
+        {/* Interactive Video Game Section */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <Gamepad2 className="w-8 h-8 text-primary" />
+            <h2 className="text-3xl font-bold text-foreground">Interactive Video Game</h2>
+          </div>
+          
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+            <CardHeader>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                  <Gamepad2 className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl">Coin Catcher Adventure</CardTitle>
+                  <span className="text-sm text-primary font-medium">Interactive</span>
+                </div>
+              </div>
+              <CardDescription className="text-base">
+                Move your basket to catch falling coins and learn about money values! 
+                Collect the right amount to buy fun items in this exciting game.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600" 
+                onClick={() => setCoinCatcherOpen(true)}
+              >
+                Play Video Game
+              </Button>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* Best Scores Section */}
         <section className="mb-16">
           <BestScoreSection />
@@ -171,6 +207,7 @@ const SpecialNeedsFinance = () => {
 
       <MoneyCountingGame open={gameOpen} onClose={() => setGameOpen(false)} />
       <ShoppingAdventureGame open={shoppingGameOpen} onClose={() => setShoppingGameOpen(false)} />
+      <CoinCatcherGame open={coinCatcherOpen} onClose={() => setCoinCatcherOpen(false)} />
       <Footer />
     </div>;
 };
