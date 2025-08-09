@@ -4,6 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Star, RotateCcw } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { toast } from "sonner";
 
 interface ShoppingAdventureGameProps {
   open: boolean;
@@ -11,11 +14,13 @@ interface ShoppingAdventureGameProps {
 }
 
 const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) => {
+  const { user } = useAuth();
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
+  const [savingScore, setSavingScore] = useState(false);
 
   const questions = [
     {
@@ -80,8 +85,37 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
         setShowResult(false);
       } else {
         setGameCompleted(true);
+        saveScore();
       }
     }, 1500);
+  };
+
+  const saveScore = async () => {
+    if (!user) return;
+    
+    setSavingScore(true);
+    try {
+      const { error } = await supabase
+        .from('user_game_scores')
+        .insert({
+          user_id: user.id,
+          game_name: 'Shopping Adventure Game',
+          score,
+          total_questions: questions.length
+        });
+
+      if (error) {
+        console.error('Error saving score:', error);
+        toast.error('Failed to save your score');
+      } else {
+        toast.success('Score saved successfully!');
+      }
+    } catch (error) {
+      console.error('Error saving score:', error);
+      toast.error('Failed to save your score');
+    } finally {
+      setSavingScore(false);
+    }
   };
 
   const resetGame = () => {
@@ -201,6 +235,16 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
                   Final Score: {score} out of {questions.length}
                 </span>
               </div>
+              {user && (
+                <p className="text-sm text-muted-foreground mb-4">
+                  {savingScore ? "Saving your score..." : "Score saved to your profile!"}
+                </p>
+              )}
+              {!user && (
+                <p className="text-sm text-muted-foreground mb-4">
+                  Sign in to save your scores and track your progress!
+                </p>
+              )}
             </div>
             
             <div className="flex gap-3">
