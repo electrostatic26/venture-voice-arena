@@ -66,8 +66,10 @@ const MoneyCountingGame = ({ open, onClose }: MoneyCountingGameProps) => {
     setSelectedAnswer(answer);
     setShowResult(true);
     
+    let newScore = score;
     if (answer === questions[currentQuestion].correctAnswer) {
-      setScore(score + 1);
+      newScore = score + 1;
+      setScore(newScore);
     }
 
     setTimeout(() => {
@@ -77,12 +79,12 @@ const MoneyCountingGame = ({ open, onClose }: MoneyCountingGameProps) => {
         setShowResult(false);
       } else {
         setGameCompleted(true);
-        saveScore();
+        saveScore(newScore);
       }
     }, 1500);
   };
 
-  const saveScore = async () => {
+  const saveScore = async (finalScore: number = score) => {
     if (!user) return;
     
     setSavingScore(true);
@@ -92,7 +94,7 @@ const MoneyCountingGame = ({ open, onClose }: MoneyCountingGameProps) => {
         .insert({
           user_id: user.id,
           game_name: 'Money Counting Game',
-          score,
+          score: finalScore,
           total_questions: questions.length
         });
 
@@ -101,6 +103,8 @@ const MoneyCountingGame = ({ open, onClose }: MoneyCountingGameProps) => {
         toast.error('Failed to save your score');
       } else {
         toast.success('Score saved successfully!');
+        // Trigger a custom event to refresh the best scores
+        window.dispatchEvent(new CustomEvent('scoreUpdated'));
       }
     } catch (error) {
       console.error('Error saving score:', error);
@@ -204,8 +208,7 @@ const MoneyCountingGame = ({ open, onClose }: MoneyCountingGameProps) => {
                       <p className="text-green-600 font-medium">✅ Correct! Great job!</p>
                     ) : (
                       <p className="text-red-600 font-medium">
-                        ❌ Not quite. The answer is {questions[currentQuestion].correctAnswer}
-                        {questions[currentQuestion].unit && ` ${questions[currentQuestion].unit}`}
+                        ❌ Not quite. Try again next time!
                       </p>
                     )}
                   </div>
