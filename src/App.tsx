@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Competition from "./pages/Competition";
 import SpecialNeedsFinance from "./pages/SpecialNeedsFinance";
 import FinanceTopics from "./pages/FinanceTopics";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/competition" element={<Competition />} />
           <Route path="/special-needs-finance" element={<SpecialNeedsFinance />} />
           <Route path="/finance-topics" element={<FinanceTopics />} />

@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { LogOut, User } from "lucide-react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
   
   const scrollToSection = (sectionId: string) => {
     // If we're not on the home page, navigate there first
@@ -58,9 +61,32 @@ const Header = () => {
             >
               Special Needs
             </button>
-            <Button variant="default" size="sm" className="bg-gradient-primary hover:shadow-neon transition-all duration-300">
-              Subscribe
-            </Button>
+            {user ? (
+              <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 text-sm">
+                  <User className="h-4 w-4" />
+                  <span className="text-muted-foreground">{user.email}</span>
+                </div>
+                <Button 
+                  onClick={signOut}
+                  variant="outline" 
+                  size="sm" 
+                  className="bg-background/50 border-border hover:bg-accent/20"
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                onClick={() => navigate('/auth')}
+                variant="default" 
+                size="sm" 
+                className="bg-gradient-primary hover:shadow-neon transition-all duration-300"
+              >
+                Sign In
+              </Button>
+            )}
           </nav>
         </div>
       </div>
