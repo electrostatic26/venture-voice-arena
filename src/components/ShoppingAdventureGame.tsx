@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -21,6 +21,7 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
   const [showResult, setShowResult] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
   const [savingScore, setSavingScore] = useState(false);
+  const [shuffledOptions, setShuffledOptions] = useState<number[]>([]);
 
   const questions = [
     {
@@ -69,6 +70,19 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
       unit: "dollars"
     }
   ];
+
+  // Shuffle options when question changes
+  useEffect(() => {
+    if (questions[currentQuestion]) {
+      const options = [...questions[currentQuestion].options];
+      // Simple Fisher-Yates shuffle
+      for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+      }
+      setShuffledOptions(options);
+    }
+  }, [currentQuestion]);
 
   const handleAnswerSelect = (answer: number) => {
     setSelectedAnswer(answer);
@@ -176,7 +190,7 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
 
                 {/* Answer Options */}
                 <div className="grid grid-cols-2 gap-3">
-                  {questions[currentQuestion].options.map((option, index) => {
+                  {shuffledOptions.map((option, index) => {
                     let buttonVariant: "default" | "outline" | "destructive" = "outline";
                     let buttonClass = "";
 
@@ -196,7 +210,7 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
 
                     return (
                       <Button
-                        key={index}
+                        key={`${currentQuestion}-${option}-${index}`}
                         variant={buttonVariant}
                         className={`h-12 text-lg ${buttonClass}`}
                         onClick={() => handleAnswerSelect(option)}
