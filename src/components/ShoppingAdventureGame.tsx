@@ -125,8 +125,10 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
         toast.error('Failed to save your score');
       } else {
         toast.success('Score saved successfully!');
-        // Trigger a custom event to refresh the best scores
-        window.dispatchEvent(new CustomEvent('scoreUpdated'));
+        // Trigger a custom event to refresh the best scores with score details
+        window.dispatchEvent(new CustomEvent('scoreUpdated', { 
+          detail: { gameName: 'Shopping Adventure Game', score: finalScore }
+        }));
       }
     } catch (error) {
       console.error('Error saving score:', error);

@@ -185,6 +185,11 @@ const CoinCatcherGame = ({ open, onClose }: CoinCatcherGameProps) => {
         game_name: 'coin_catcher',
         score: score,
       });
+      
+      // Trigger immediate score update
+      window.dispatchEvent(new CustomEvent('scoreUpdated', { 
+        detail: { gameName: 'coin_catcher', score: score }
+      }));
     } catch (error) {
       console.error('Error saving score:', error);
     }

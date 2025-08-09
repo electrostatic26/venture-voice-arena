@@ -52,14 +52,37 @@ const SpecialNeedsFinance = () => {
           schema: 'public',
           table: 'user_game_scores'
         },
-        () => {
-          fetchBestScores(); // Refetch scores when new score is added
+        (payload) => {
+          // Immediately update local state if this is a new best score
+          const newScore = payload.new as { game_name: string; score: number };
+          setBestScores(prev => {
+            const currentBest = prev[newScore.game_name] || 0;
+            if (newScore.score > currentBest) {
+              return { ...prev, [newScore.game_name]: newScore.score };
+            }
+            return prev;
+          });
         }
       )
       .subscribe();
 
+    // Also listen for custom events from game components
+    const handleScoreUpdate = (event: CustomEvent) => {
+      const { gameName, score } = event.detail;
+      setBestScores(prev => {
+        const currentBest = prev[gameName] || 0;
+        if (score > currentBest) {
+          return { ...prev, [gameName]: score };
+        }
+        return prev;
+      });
+    };
+
+    window.addEventListener('scoreUpdated', handleScoreUpdate as EventListener);
+
     return () => {
       supabase.removeChannel(channel);
+      window.removeEventListener('scoreUpdated', handleScoreUpdate as EventListener);
     };
   }, []);
 
