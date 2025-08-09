@@ -214,11 +214,14 @@ const FinanceTopics = () => {
                           {article.excerpt}
                         </p>
                         <Button 
+                          asChild
                           variant="outline" 
                           size="sm"
                           className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary transition-all duration-300"
                         >
-                          Read Article
+                          <Link to={`/article/${category.title.toLowerCase().replace(/ /g, '-')}/${articleIndex}`}>
+                            Read Article
+                          </Link>
                         </Button>
                       </CardContent>
                     </Card>
