@@ -41,6 +41,26 @@ const SpecialNeedsFinance = () => {
     };
     
     fetchBestScores();
+
+    // Set up real-time listener for score updates
+    const channel = supabase
+      .channel('score-updates')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'user_game_scores'
+        },
+        () => {
+          fetchBestScores(); // Refetch scores when new score is added
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const articles = [{
@@ -70,13 +90,13 @@ const SpecialNeedsFinance = () => {
     description: "Match coins and bills with their correct values.",
     difficulty: "Easy",
     color: "bg-green-500",
-    gameKey: "money_counting"
+    gameKey: "Money Counting Game"
   }, {
     title: "Shopping Adventure",
     description: "Practice buying things and getting the right change.",
     difficulty: "Medium",
     color: "bg-blue-500",
-    gameKey: "shopping_adventure"
+    gameKey: "Shopping Adventure Game"
   }, {
     title: "Savings Challenge",
     description: "Learn to save money for special things you want.",
