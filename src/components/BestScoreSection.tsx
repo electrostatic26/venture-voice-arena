@@ -24,6 +24,16 @@ const BestScoreSection = () => {
     } else {
       setLoading(false);
     }
+
+    // Listen for score updates to refresh immediately
+    const handleScoreUpdate = () => {
+      if (user) {
+        fetchBestScores();
+      }
+    };
+
+    window.addEventListener('scoreUpdated', handleScoreUpdate);
+    return () => window.removeEventListener('scoreUpdated', handleScoreUpdate);
   }, [user]);
 
   const fetchBestScores = async () => {

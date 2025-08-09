@@ -88,8 +88,10 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
     setSelectedAnswer(answer);
     setShowResult(true);
     
+    let newScore = score;
     if (answer === questions[currentQuestion].correctAnswer) {
-      setScore(score + 1);
+      newScore = score + 1;
+      setScore(newScore);
     }
 
     setTimeout(() => {
@@ -99,12 +101,12 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
         setShowResult(false);
       } else {
         setGameCompleted(true);
-        saveScore();
+        saveScore(newScore);
       }
     }, 1500);
   };
 
-  const saveScore = async () => {
+  const saveScore = async (finalScore: number = score) => {
     if (!user) return;
     
     setSavingScore(true);
@@ -114,7 +116,7 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
         .insert({
           user_id: user.id,
           game_name: 'Shopping Adventure Game',
-          score,
+          score: finalScore,
           total_questions: questions.length
         });
 
@@ -123,6 +125,8 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
         toast.error('Failed to save your score');
       } else {
         toast.success('Score saved successfully!');
+        // Trigger a custom event to refresh the best scores
+        window.dispatchEvent(new CustomEvent('scoreUpdated'));
       }
     } catch (error) {
       console.error('Error saving score:', error);
