@@ -156,13 +156,20 @@ const SpecialNeedsFinance = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {games.map((game, index) => <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer relative">
                 <CardHeader>
-                  {/* Best Score Badge */}
-                  {bestScores[game.gameKey] && (
-                    <div className="absolute top-4 right-4 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                      <Trophy className="w-3 h-3" />
-                      Best: {bestScores[game.gameKey]}
-                    </div>
-                  )}
+                  {/* Best Score Badge - shows placeholder if no score yet */}
+                  <div className="absolute top-4 right-4">
+                    {bestScores[game.gameKey] ? (
+                      <div className="bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                        <Trophy className="w-3 h-3" />
+                        Best: {bestScores[game.gameKey]}
+                      </div>
+                    ) : (
+                      <div className="bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                        <Trophy className="w-3 h-3" />
+                        No Score
+                      </div>
+                    )}
+                  </div>
                   
                   <div className="flex items-center gap-3 mb-2">
                     <div className={`w-12 h-12 ${game.color} rounded-full flex items-center justify-center`}>
