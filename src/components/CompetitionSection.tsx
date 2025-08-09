@@ -9,7 +9,7 @@ const CompetitionSection = () => {
     {
       title: "Global Startup Pitch Challenge 2025",
       description: "Present your innovative business idea to a panel of leading investors and industry experts. Win funding and mentorship opportunities.",
-      prize: "$100,000",
+      prize: "$500",
       participants: "500+",
       deadline: "March 15, 2025",
       status: "Open",
