@@ -2,11 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { LogOut, User } from "lucide-react";
+import { LogOut, User, Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
   
   const scrollToSection = (sectionId: string) => {
     // If we're not on the home page, navigate there first
@@ -36,6 +39,7 @@ const Header = () => {
             </h1>
           </div>
           
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => {
@@ -91,6 +95,81 @@ const Header = () => {
               </Button>
             )}
           </nav>
+
+          {/* Mobile Navigation */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-80 bg-background/95 backdrop-blur-glass border-border/50">
+              <div className="flex flex-col space-y-6 mt-8">
+                <button 
+                  onClick={() => {
+                    navigate('/finance-topics');
+                    window.scrollTo(0, 0);
+                    setIsOpen(false);
+                  }}
+                  className="text-left text-lg font-medium hover:text-primary transition-all duration-300 py-2"
+                >
+                  Articles
+                </button>
+                <button 
+                  onClick={() => {
+                    navigate('/competition');
+                    window.scrollTo(0, 0);
+                    setIsOpen(false);
+                  }}
+                  className="text-left text-lg font-medium hover:text-primary transition-all duration-300 py-2"
+                >
+                  Competition
+                </button>
+                <button 
+                  onClick={() => {
+                    navigate('/special-needs-finance');
+                    window.scrollTo(0, 0);
+                    setIsOpen(false);
+                  }}
+                  className="text-left text-lg font-medium hover:text-primary transition-all duration-300 py-2"
+                >
+                  Special Needs
+                </button>
+                
+                <div className="border-t border-border/50 pt-6">
+                  {user ? (
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-2">
+                        <User className="h-4 w-4" />
+                        <span className="text-muted-foreground text-sm">{user.email}</span>
+                      </div>
+                      <Button 
+                        onClick={() => {
+                          signOut();
+                          setIsOpen(false);
+                        }}
+                        variant="outline" 
+                        className="w-full bg-background/50 border-border hover:bg-accent/20"
+                      >
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Sign Out
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button 
+                      onClick={() => {
+                        navigate('/auth');
+                        setIsOpen(false);
+                      }}
+                      className="w-full bg-gradient-primary hover:shadow-neon transition-all duration-300"
+                    >
+                      Sign In
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
