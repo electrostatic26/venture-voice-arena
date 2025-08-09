@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MoneyCountingGame from "@/components/MoneyCountingGame";
 import ShoppingAdventureGame from "@/components/ShoppingAdventureGame";
+import BestScoreSection from "@/components/BestScoreSection";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -170,6 +171,11 @@ const SpecialNeedsFinance = () => {
               </Card>
             ))}
           </div>
+        </section>
+
+        {/* Best Scores Section */}
+        <section className="mb-16">
+          <BestScoreSection />
         </section>
 
         {/* Support Section */}
