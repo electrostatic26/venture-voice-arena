@@ -3,17 +3,46 @@ import Footer from "@/components/Footer";
 import MoneyCountingGame from "@/components/MoneyCountingGame";
 import ShoppingAdventureGame from "@/components/ShoppingAdventureGame";
 import CoinCatcherGame from "@/components/CoinCatcherGame";
-import BestScoreSection from "@/components/BestScoreSection";
+import { supabase } from "@/integrations/supabase/client";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, Calculator, Coins, CreditCard, PiggyBank, Trophy, ArrowLeft, Gamepad2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const SpecialNeedsFinance = () => {
   const navigate = useNavigate();
   const [gameOpen, setGameOpen] = useState(false);
   const [shoppingGameOpen, setShoppingGameOpen] = useState(false);
   const [coinCatcherOpen, setCoinCatcherOpen] = useState(false);
+  const [bestScores, setBestScores] = useState<Record<string, number>>({});
+  
+  // Fetch best scores on component mount
+  useEffect(() => {
+    const fetchBestScores = async () => {
+      try {
+        const { data } = await supabase
+          .from('user_game_scores')
+          .select('game_name, score')
+          .order('score', { ascending: false });
+        
+        if (data) {
+          const scores: Record<string, number> = {};
+          data.forEach(record => {
+            if (!scores[record.game_name] || scores[record.game_name] < record.score) {
+              scores[record.game_name] = record.score;
+            }
+          });
+          setBestScores(scores);
+        }
+      } catch (error) {
+        console.error('Error fetching scores:', error);
+      }
+    };
+    
+    fetchBestScores();
+  }, []);
+
   const articles = [{
     title: "What is Money?",
     description: "Learn about coins, bills, and why we use money every day.",
@@ -35,26 +64,31 @@ const SpecialNeedsFinance = () => {
     icon: <Calculator className="w-6 h-6" />,
     difficulty: "Intermediate"
   }];
+  
   const games = [{
     title: "Money Matching Game",
     description: "Match coins and bills with their correct values.",
     difficulty: "Easy",
-    color: "bg-green-500"
+    color: "bg-green-500",
+    gameKey: "money_counting"
   }, {
     title: "Shopping Adventure",
     description: "Practice buying things and getting the right change.",
     difficulty: "Medium",
-    color: "bg-blue-500"
+    color: "bg-blue-500",
+    gameKey: "shopping_adventure"
   }, {
     title: "Savings Challenge",
     description: "Learn to save money for special things you want.",
     difficulty: "Easy",
-    color: "bg-purple-500"
+    color: "bg-purple-500",
+    gameKey: "savings_challenge"
   }, {
     title: "Budget Builder",
     description: "Create your own budget and learn to manage money.",
     difficulty: "Hard",
-    color: "bg-orange-500"
+    color: "bg-orange-500",
+    gameKey: "budget_builder"
   }];
   return <div className="min-h-screen bg-background">
       <Header />
@@ -119,9 +153,17 @@ const SpecialNeedsFinance = () => {
             <h2 className="text-3xl font-bold text-foreground">Fun Quiz Games</h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {games.map((game, index) => <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
+          <div className="grid md:grid-cols-2 gap-6">
+            {games.map((game, index) => <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer relative">
                 <CardHeader>
+                  {/* Best Score Badge */}
+                  {bestScores[game.gameKey] && (
+                    <div className="absolute top-4 right-4 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                      <Trophy className="w-3 h-3" />
+                      Best: {bestScores[game.gameKey]}
+                    </div>
+                  )}
+                  
                   <div className="flex items-center gap-3 mb-2">
                     <div className={`w-12 h-12 ${game.color} rounded-full flex items-center justify-center`}>
                       <Trophy className="w-6 h-6 text-white" />
@@ -150,9 +192,6 @@ const SpecialNeedsFinance = () => {
                 </CardContent>
               </Card>)}
           </div>
-
-          {/* Best Scores integrated into Games section */}
-          <BestScoreSection />
         </section>
 
         {/* Interactive Video Game Section */}
