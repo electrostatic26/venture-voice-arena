@@ -33,20 +33,50 @@ const COIN_TYPES = [
 ];
 
 const TARGETS = [
-  { amount: 25, item: "Gum" },
-  { amount: 50, item: "Sticker" },
-  { amount: 75, item: "Pencil" },
-  { amount: 100, item: "Toy Car" },
+  { 
+    amount: 25, 
+    item: "Gum", 
+    lesson: "25 cents is a quarter! One quarter coin equals 25 pennies.",
+    question: "Should you spend all your money on gum?",
+    goodChoice: "Save some money for later",
+    badChoice: "Spend it all on gum"
+  },
+  { 
+    amount: 50, 
+    item: "Sticker", 
+    lesson: "50 cents is half a dollar! You can make 50¢ with 2 quarters or 5 dimes.",
+    question: "You have 75¢. If you buy this 50¢ sticker, how much will you have left?",
+    goodChoice: "25¢ left over",
+    badChoice: "0¢ left over"
+  },
+  { 
+    amount: 75, 
+    item: "Pencil", 
+    lesson: "75 cents is three quarters! Always good to buy things you need for school.",
+    question: "Is a pencil a NEED or a WANT?",
+    goodChoice: "A pencil is a NEED for school",
+    badChoice: "A pencil is just a WANT"
+  },
+  { 
+    amount: 100, 
+    item: "Toy Car", 
+    lesson: "100 cents equals 1 dollar! You can save money to buy bigger things you want.",
+    question: "What's the best way to get money for toys?",
+    goodChoice: "Save money over time",
+    badChoice: "Ask for money every day"
+  },
 ];
 
 const CoinCatcherGame = ({ open, onClose }: CoinCatcherGameProps) => {
   const { user } = useAuth();
-  const [gameState, setGameState] = useState<'playing' | 'complete' | 'ready'>('ready');
+  const [gameState, setGameState] = useState<'playing' | 'complete' | 'ready' | 'lesson' | 'question'>('ready');
   const [score, setScore] = useState(0);
   const [currentTarget, setCurrentTarget] = useState(0);
   const [coins, setCoins] = useState<Coin[]>([]);
   const [player, setPlayer] = useState<Player>({ x: 250, width: 60 });
   const [gameTime, setGameTime] = useState(0);
+  const [showingLesson, setShowingLesson] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const gameLoopRef = useRef<NodeJS.Timeout>();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -60,6 +90,8 @@ const CoinCatcherGame = ({ open, onClose }: CoinCatcherGameProps) => {
     setCoins([]);
     setPlayer({ x: gameWidth / 2 - 30, width: 60 });
     setGameTime(0);
+    setCorrectAnswers(0);
+    setShowingLesson(false);
   };
 
   const spawnCoin = useCallback(() => {
@@ -114,16 +146,35 @@ const CoinCatcherGame = ({ open, onClose }: CoinCatcherGameProps) => {
 
     // Check if target reached
     const target = TARGETS[currentTarget];
-    if (target && score >= target.amount) {
-      toast(`🎉 You bought a ${target.item}!`);
-      if (currentTarget === TARGETS.length - 1) {
-        setGameState('complete');
-        saveScore();
-      } else {
-        setCurrentTarget(prev => prev + 1);
-      }
+    if (target && score >= target.amount && !showingLesson) {
+      setShowingLesson(true);
+      setGameState('lesson');
+      setCoins([]); // Clear coins when showing lesson
     }
-  }, [gameState, player.x, score, currentTarget, spawnCoin]);
+  }, [gameState, player.x, score, currentTarget, spawnCoin, showingLesson]);
+
+  const handleLessonComplete = () => {
+    setGameState('question');
+  };
+
+  const handleAnswerChoice = (isCorrect: boolean) => {
+    if (isCorrect) {
+      setCorrectAnswers(prev => prev + 1);
+      toast("Great job! That's the right choice! 🎉");
+    } else {
+      toast("Let's think about that again! 🤔");
+    }
+    
+    if (currentTarget === TARGETS.length - 1) {
+      setGameState('complete');
+      saveScore();
+    } else {
+      setCurrentTarget(prev => prev + 1);
+      setShowingLesson(false);
+      setGameState('playing');
+    }
+  };
+  
 
   const saveScore = async () => {
     if (!user) return;
@@ -235,16 +286,68 @@ const CoinCatcherGame = ({ open, onClose }: CoinCatcherGameProps) => {
           {gameState === 'ready' && (
             <Card>
               <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-bold mb-4">How to Play</h3>
+                <h3 className="text-xl font-bold mb-4">Learn About Money!</h3>
                 <div className="space-y-2 text-left max-w-md mx-auto">
                   <p>• Use arrow keys or A/D to move your basket</p>
                   <p>• Catch falling coins to collect money</p>
-                  <p>• Reach the target amount to buy items!</p>
-                  <p>• Complete all targets to win!</p>
+                  <p>• Learn about coin values and smart spending</p>
+                  <p>• Make good money choices to complete the game!</p>
                 </div>
                 <Button onClick={startGame} size="lg" className="mt-4">
-                  Start Game
+                  Start Learning
                 </Button>
+              </CardContent>
+            </Card>
+          )}
+
+          {gameState === 'lesson' && (
+            <Card className="border-primary bg-primary/5">
+              <CardContent className="p-6 text-center">
+                <h3 className="text-xl font-bold mb-4 text-primary">Money Lesson!</h3>
+                <div className="mb-4">
+                  <div className="text-6xl mb-2">🎉</div>
+                  <p className="text-lg font-semibold mb-2">
+                    You earned {TARGETS[currentTarget]?.amount}¢ for a {TARGETS[currentTarget]?.item}!
+                  </p>
+                </div>
+                <div className="bg-background rounded-lg p-4 mb-4">
+                  <p className="text-base">
+                    {TARGETS[currentTarget]?.lesson}
+                  </p>
+                </div>
+                <Button onClick={handleLessonComplete} size="lg">
+                  Continue to Question
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+
+          {gameState === 'question' && (
+            <Card className="border-blue-500 bg-blue-50 dark:bg-blue-900/20">
+              <CardContent className="p-6 text-center">
+                <h3 className="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Money Question!</h3>
+                <div className="mb-6">
+                  <p className="text-lg mb-4">
+                    {TARGETS[currentTarget]?.question}
+                  </p>
+                </div>
+                <div className="space-y-3">
+                  <Button 
+                    onClick={() => handleAnswerChoice(true)}
+                    className="w-full bg-green-500 hover:bg-green-600 text-white"
+                    size="lg"
+                  >
+                    {TARGETS[currentTarget]?.goodChoice}
+                  </Button>
+                  <Button 
+                    onClick={() => handleAnswerChoice(false)}
+                    variant="outline"
+                    className="w-full border-red-500 text-red-600 hover:bg-red-50"
+                    size="lg"
+                  >
+                    {TARGETS[currentTarget]?.badChoice}
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           )}
@@ -252,12 +355,18 @@ const CoinCatcherGame = ({ open, onClose }: CoinCatcherGameProps) => {
           {gameState === 'playing' && (
             <>
               <div className="flex justify-between items-center">
-                <div className="text-lg font-bold">Score: {score}¢</div>
+                <div className="text-lg font-bold">Money Saved: {score}¢</div>
                 {currentTargetData && (
                   <div className="text-lg">
-                    Target: {currentTargetData.amount}¢ for {currentTargetData.item}
+                    Goal: {currentTargetData.amount}¢ for {currentTargetData.item}
                   </div>
                 )}
+              </div>
+
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 text-center">
+                <p className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                  💡 Tip: Each coin has different values! Quarters (25¢) are worth more than pennies (1¢)
+                </p>
               </div>
 
               <div className="relative border-2 border-primary rounded-lg overflow-hidden">
@@ -284,9 +393,12 @@ const CoinCatcherGame = ({ open, onClose }: CoinCatcherGameProps) => {
             <Card>
               <CardContent className="p-6 text-center">
                 <Trophy className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Congratulations!</h3>
-                <p className="text-lg mb-4">
-                  You collected {score}¢ and bought all the items!
+                <h3 className="text-2xl font-bold mb-2">Money Master!</h3>
+                <p className="text-lg mb-2">
+                  You collected {score}¢ and learned about smart money choices!
+                </p>
+                <p className="text-base text-muted-foreground mb-4">
+                  You answered {correctAnswers} out of {TARGETS.length} money questions correctly!
                 </p>
                 <div className="flex gap-2 justify-center">
                   <Button onClick={startGame} variant="outline">
