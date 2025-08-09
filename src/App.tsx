@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Competition from "./pages/Competition";
 import SpecialNeedsFinance from "./pages/SpecialNeedsFinance";
 import FinanceTopics from "./pages/FinanceTopics";
+import ArticleDetail from "./pages/ArticleDetail";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/competition" element={<Competition />} />
           <Route path="/special-needs-finance" element={<SpecialNeedsFinance />} />
           <Route path="/finance-topics" element={<FinanceTopics />} />
+          <Route path="/article/:articleId" element={<ArticleDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
