@@ -228,7 +228,7 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
                       <p className="text-green-600 font-medium">✅ Correct! Great shopping!</p>
                     ) : (
                       <p className="text-red-600 font-medium">
-                        ❌ Not quite. The answer is {questions[currentQuestion].correctAnswer} {questions[currentQuestion].unit}
+                        ❌ Not quite. Try again next time!
                       </p>
                     )}
                   </div>
