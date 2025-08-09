@@ -116,11 +116,10 @@ const SpecialNeedsFinance = () => {
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
             <Trophy className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl font-bold text-foreground">Fun Quiz Games
-          </h2>
+            <h2 className="text-3xl font-bold text-foreground">Fun Quiz Games</h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
             {games.map((game, index) => <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
@@ -151,6 +150,9 @@ const SpecialNeedsFinance = () => {
                 </CardContent>
               </Card>)}
           </div>
+
+          {/* Best Scores integrated into Games section */}
+          <BestScoreSection />
         </section>
 
         {/* Interactive Video Game Section */}
@@ -187,11 +189,6 @@ const SpecialNeedsFinance = () => {
               </Button>
             </CardContent>
           </Card>
-        </section>
-
-        {/* Best Scores Section */}
-        <section className="mb-16">
-          <BestScoreSection />
         </section>
 
         {/* Support Section */}
