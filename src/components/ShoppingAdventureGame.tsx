@@ -101,13 +101,18 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
         setShowResult(false);
       } else {
         setGameCompleted(true);
+        console.log('Game completed! Final score:', newScore, 'User:', user?.id);
         saveScore(newScore);
       }
     }, 1500);
   };
 
   const saveScore = async (finalScore: number = score) => {
-    if (!user) return;
+    console.log('saveScore called with:', finalScore, 'User:', user?.id);
+    if (!user) {
+      console.log('No user found, skipping score save');
+      return;
+    }
     
     setSavingScore(true);
     try {
@@ -124,6 +129,7 @@ const ShoppingAdventureGame = ({ open, onClose }: ShoppingAdventureGameProps) =>
         console.error('Error saving score:', error);
         toast.error('Failed to save your score');
       } else {
+        console.log('Score saved successfully, dispatching event');
         toast.success('Score saved successfully!');
         // Trigger a custom event to refresh the best scores with score details
         window.dispatchEvent(new CustomEvent('scoreUpdated', { 
