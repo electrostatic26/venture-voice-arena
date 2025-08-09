@@ -160,27 +160,29 @@ const SpecialNeedsFinance = () => {
             <h2 className="text-3xl font-bold text-foreground">Interactive Video Game</h2>
           </div>
           
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+          <Card className="hover:shadow-lg transition-all duration-300 border-2 border-purple-200 dark:border-purple-800 bg-gradient-to-br from-background via-purple-50/30 to-background dark:from-background dark:via-purple-950/20 dark:to-background">
             <CardHeader>
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
                   <Gamepad2 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <CardTitle className="text-xl">Coin Catcher Adventure</CardTitle>
-                  <span className="text-sm text-primary font-medium">Interactive</span>
+                  <CardTitle className="text-xl text-foreground">Coin Catcher Adventure</CardTitle>
+                  <span className="text-sm text-purple-600 dark:text-purple-400 font-medium bg-purple-100 dark:bg-purple-900/50 px-2 py-1 rounded-full">Interactive Game</span>
                 </div>
               </div>
-              <CardDescription className="text-base">
+              <CardDescription className="text-base text-muted-foreground">
                 Move your basket to catch falling coins and learn about money values! 
-                Collect the right amount to buy fun items in this exciting game.
+                Collect the right amount to buy fun items while learning smart money choices.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button 
-                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600" 
+                className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02]" 
                 onClick={() => setCoinCatcherOpen(true)}
+                size="lg"
               >
+                <Gamepad2 className="w-4 h-4 mr-2" />
                 Play Video Game
               </Button>
             </CardContent>
