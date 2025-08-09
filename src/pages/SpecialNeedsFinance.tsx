@@ -8,79 +8,61 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { BookOpen, Calculator, Coins, CreditCard, PiggyBank, Trophy, ArrowLeft } from "lucide-react";
 import { useState } from "react";
-
 const SpecialNeedsFinance = () => {
   const navigate = useNavigate();
   const [gameOpen, setGameOpen] = useState(false);
   const [shoppingGameOpen, setShoppingGameOpen] = useState(false);
-  const articles = [
-    {
-      title: "What is Money?",
-      description: "Learn about coins, bills, and why we use money every day.",
-      icon: <Coins className="w-6 h-6" />,
-      difficulty: "Beginner"
-    },
-    {
-      title: "Saving Your Money",
-      description: "How to keep your money safe and watch it grow over time.",
-      icon: <PiggyBank className="w-6 h-6" />,
-      difficulty: "Beginner"
-    },
-    {
-      title: "Using a Bank Card",
-      description: "Simple steps to use your debit card safely at stores.",
-      icon: <CreditCard className="w-6 h-6" />,
-      difficulty: "Intermediate"
-    },
-    {
-      title: "Making a Budget",
-      description: "Plan how to spend and save your money each month.",
-      icon: <Calculator className="w-6 h-6" />,
-      difficulty: "Intermediate"
-    }
-  ];
-
-  const games = [
-    {
-      title: "Money Matching Game",
-      description: "Match coins and bills with their correct values.",
-      difficulty: "Easy",
-      color: "bg-green-500"
-    },
-    {
-      title: "Shopping Adventure",
-      description: "Practice buying things and getting the right change.",
-      difficulty: "Medium",
-      color: "bg-blue-500"
-    },
-    {
-      title: "Savings Challenge",
-      description: "Learn to save money for special things you want.",
-      difficulty: "Easy",
-      color: "bg-purple-500"
-    },
-    {
-      title: "Budget Builder",
-      description: "Create your own budget and learn to manage money.",
-      difficulty: "Hard",
-      color: "bg-orange-500"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const articles = [{
+    title: "What is Money?",
+    description: "Learn about coins, bills, and why we use money every day.",
+    icon: <Coins className="w-6 h-6" />,
+    difficulty: "Beginner"
+  }, {
+    title: "Saving Your Money",
+    description: "How to keep your money safe and watch it grow over time.",
+    icon: <PiggyBank className="w-6 h-6" />,
+    difficulty: "Beginner"
+  }, {
+    title: "Using a Bank Card",
+    description: "Simple steps to use your debit card safely at stores.",
+    icon: <CreditCard className="w-6 h-6" />,
+    difficulty: "Intermediate"
+  }, {
+    title: "Making a Budget",
+    description: "Plan how to spend and save your money each month.",
+    icon: <Calculator className="w-6 h-6" />,
+    difficulty: "Intermediate"
+  }];
+  const games = [{
+    title: "Money Matching Game",
+    description: "Match coins and bills with their correct values.",
+    difficulty: "Easy",
+    color: "bg-green-500"
+  }, {
+    title: "Shopping Adventure",
+    description: "Practice buying things and getting the right change.",
+    difficulty: "Medium",
+    color: "bg-blue-500"
+  }, {
+    title: "Savings Challenge",
+    description: "Learn to save money for special things you want.",
+    difficulty: "Easy",
+    color: "bg-purple-500"
+  }, {
+    title: "Budget Builder",
+    description: "Create your own budget and learn to manage money.",
+    difficulty: "Hard",
+    color: "bg-orange-500"
+  }];
+  return <div className="min-h-screen bg-background">
       <Header />
       
       <main className="container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Button 
-            variant="ghost" 
-            onClick={() => {
-              navigate("/");
-              window.scrollTo(0, 0);
-            }}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-          >
+          <Button variant="ghost" onClick={() => {
+          navigate("/");
+          window.scrollTo(0, 0);
+        }} className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Button>
@@ -104,8 +86,7 @@ const SpecialNeedsFinance = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            {articles.map((article, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
+            {articles.map((article, index) => <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -125,8 +106,7 @@ const SpecialNeedsFinance = () => {
                     Read Article
                   </Button>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </section>
 
@@ -134,12 +114,12 @@ const SpecialNeedsFinance = () => {
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
             <Trophy className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl font-bold text-foreground">Fun Money Games</h2>
+            <h2 className="text-3xl font-bold text-foreground">Fun Quiz Games
+          </h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            {games.map((game, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
+            {games.map((game, index) => <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <div className={`w-12 h-12 ${game.color} rounded-full flex items-center justify-center`}>
@@ -155,21 +135,19 @@ const SpecialNeedsFinance = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button 
-                    className="w-full"
-                    onClick={() => {
-                      if (index === 0) { // Money Matching Game
-                        setGameOpen(true);
-                      } else if (index === 1) { // Shopping Adventure
-                        setShoppingGameOpen(true);
-                      }
-                    }}
-                  >
+                  <Button className="w-full" onClick={() => {
+                if (index === 0) {
+                  // Money Matching Game
+                  setGameOpen(true);
+                } else if (index === 1) {
+                  // Shopping Adventure
+                  setShoppingGameOpen(true);
+                }
+              }}>
                     Play Game
                   </Button>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </section>
 
@@ -194,8 +172,6 @@ const SpecialNeedsFinance = () => {
       <MoneyCountingGame open={gameOpen} onClose={() => setGameOpen(false)} />
       <ShoppingAdventureGame open={shoppingGameOpen} onClose={() => setShoppingGameOpen(false)} />
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default SpecialNeedsFinance;
