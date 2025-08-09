@@ -5,39 +5,49 @@ import { Link } from "react-router-dom";
 const NewsSection = () => {
   const articles = [
     {
-      title: "Budgeting Basics: Your Path to Financial Freedom",
-      excerpt: "Creating a budget is the foundation of financial wellness. It's your roadmap to understanding where your money goes and how to make it work better for you.",
-      category: "Budgeting",
+      title: "Federal Reserve Signals Rate Cuts Amid Economic Uncertainty",
+      excerpt: "The Fed hints at potential interest rate cuts as inflation cools and economic growth slows, creating opportunities for investors and borrowers alike.",
+      category: "Monetary Policy",
       readTime: "5 min",
-      date: "Dec 15, 2024",
-      articleId: "budgeting-basics",
+      date: "Today",
       imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=200&fit=crop"
     },
     {
-      title: "Building Your Emergency Fund: A Step-by-Step Guide",
-      excerpt: "An emergency fund is your financial safety net. It's money set aside to cover unexpected expenses without derailing your financial goals.",
-      category: "Savings",
+      title: "Bitcoin Breaks $45K as Institutional Adoption Accelerates",
+      excerpt: "Major corporations and financial institutions continue to embrace cryptocurrency, driving Bitcoin to new monthly highs and boosting market confidence.",
+      category: "Cryptocurrency",
       readTime: "7 min",
-      date: "Dec 12, 2024",
-      articleId: "emergency-fund-guide",
+      date: "Yesterday",
       imageUrl: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=200&fit=crop"
     },
     {
-      title: "How to Improve Your Credit Score in 6 Months",
-      excerpt: "Your credit score affects your ability to get loans, rent apartments, and even some jobs. Here's how to improve it quickly but responsibly.",
-      category: "Credit",
+      title: "ESG Investing Reaches Record $30 Trillion Globally",
+      excerpt: "Sustainable investing continues its rapid growth as investors prioritize environmental, social, and governance factors in their portfolio decisions.",
+      category: "ESG Investing",
       readTime: "6 min",
-      date: "Dec 10, 2024",
-      articleId: "credit-score-improvement",
+      date: "2 days ago",
       imageUrl: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=200&fit=crop"
     },
     {
-      title: "Investment Basics for Beginners",
-      excerpt: "Investing can seem intimidating, but it's one of the most powerful tools for building long-term wealth. Let's break it down into manageable concepts.",
-      category: "Investing",
+      title: "Stock Market Volatility: Expert Strategies for Protection",
+      excerpt: "Financial advisors share proven techniques for protecting portfolios during market turbulence while maintaining long-term growth potential.",
+      category: "Investment Strategy",
+      readTime: "4 min",
+      date: "3 days ago"
+    },
+    {
+      title: "Real Estate Investment Trusts (REITs) See Strong Returns",
+      excerpt: "REITs outperform traditional stocks as investors seek income-generating assets and portfolio diversification in uncertain economic times.",
+      category: "Real Estate",
       readTime: "8 min",
-      date: "Dec 8, 2024",
-      articleId: "investment-basics"
+      date: "4 days ago"
+    },
+    {
+      title: "Personal Finance Apps Revolutionize Budgeting Habits",
+      excerpt: "New AI-powered financial apps are helping millions better manage their money, track expenses, and achieve their savings goals more effectively.",
+      category: "Personal Finance",
+      readTime: "5 min",
+      date: "5 days ago"
     }
   ];
 

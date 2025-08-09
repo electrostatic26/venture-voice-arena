@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useNavigate } from "react-router-dom";
 
 interface ArticleCardProps {
   title: string;
@@ -9,21 +8,11 @@ interface ArticleCardProps {
   readTime: string;
   date: string;
   imageUrl?: string;
-  articleId: string;
 }
 
-const ArticleCard = ({ title, excerpt, category, readTime, date, imageUrl, articleId }: ArticleCardProps) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`/article/${articleId}`);
-  };
-
+const ArticleCard = ({ title, excerpt, category, readTime, date, imageUrl }: ArticleCardProps) => {
   return (
-    <Card 
-      onClick={handleClick}
-      className="bg-gradient-glass backdrop-blur-glass border border-border/50 shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 group cursor-pointer overflow-hidden"
-    >
+    <Card className="bg-gradient-glass backdrop-blur-glass border border-border/50 shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 group cursor-pointer overflow-hidden">
       {imageUrl && (
         <div className="relative overflow-hidden">
           <img 
