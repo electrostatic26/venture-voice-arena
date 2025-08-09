@@ -183,10 +183,8 @@ const MoneyCountingGame = ({ open, onClose }: MoneyCountingGameProps) => {
                         } else {
                           buttonVariant = "destructive";
                         }
-                      } else if (option === questions[currentQuestion].correctAnswer) {
-                        buttonVariant = "default";
-                        buttonClass = "bg-green-500 hover:bg-green-600 text-white";
                       }
+                      // Don't show correct answer if user got it wrong
                     }
 
                     return (
