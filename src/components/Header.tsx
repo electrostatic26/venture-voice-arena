@@ -66,7 +66,7 @@ const Header = () => {
               }}
               className="relative font-medium hover:text-primary transition-all duration-300 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
             >
-              Special Needs
+              Inclusive Education
             </button>
             {user ? (
               <div className="flex items-center space-x-3">
@@ -133,7 +133,7 @@ const Header = () => {
                   }}
                   className="text-left text-lg font-medium hover:text-primary transition-all duration-300 py-2"
                 >
-                  Special Needs
+                  Inclusive Education
                 </button>
                 
                 <div className="border-t border-border/50 pt-6">
