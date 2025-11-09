@@ -43,6 +43,15 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => {
+                navigate('/about');
+                window.scrollTo(0, 0);
+              }}
+              className="relative font-medium hover:text-primary transition-all duration-300 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+            >
+              About
+            </button>
+            <button 
+              onClick={() => {
                 navigate('/finance-topics');
                 window.scrollTo(0, 0);
               }}
@@ -105,6 +114,16 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-80 bg-background/95 backdrop-blur-glass border-border/50">
               <div className="flex flex-col space-y-6 mt-8">
+                <button 
+                  onClick={() => {
+                    navigate('/about');
+                    window.scrollTo(0, 0);
+                    setIsOpen(false);
+                  }}
+                  className="text-left text-lg font-medium hover:text-primary transition-all duration-300 py-2"
+                >
+                  About
+                </button>
                 <button 
                   onClick={() => {
                     navigate('/finance-topics');

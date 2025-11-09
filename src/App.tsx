@@ -9,6 +9,7 @@ import SpecialNeedsFinance from "./pages/SpecialNeedsFinance";
 import FinanceTopics from "./pages/FinanceTopics";
 import Auth from "./pages/Auth";
 import ArticleDetail from "./pages/ArticleDetail";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/about" element={<About />} />
           <Route path="/competition" element={<Competition />} />
           <Route path="/special-needs-finance" element={<SpecialNeedsFinance />} />
           <Route path="/finance-topics" element={<FinanceTopics />} />
