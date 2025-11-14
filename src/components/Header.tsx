@@ -30,14 +30,17 @@ const Header = () => {
     <header className="bg-gradient-glass text-foreground shadow-glass backdrop-blur-glass border-b border-border/50 sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3 group">
+          <button 
+            onClick={() => navigate('/')}
+            className="flex items-center space-x-3 group cursor-pointer"
+          >
             <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-neon animate-glow-pulse">
               <span className="font-display font-bold text-lg text-primary-foreground">F</span>
             </div>
             <h1 className="text-2xl font-display font-bold text-foreground">
               FinanceWizz
             </h1>
-          </div>
+          </button>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
