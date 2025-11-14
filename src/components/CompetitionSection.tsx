@@ -3,26 +3,22 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Users, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const CompetitionSection = () => {
-  const competitions = [
-    {
-      title: "Global Startup Pitch Challenge 2025",
-      description: "Present your innovative business idea to a panel of leading investors and industry experts. Win funding and mentorship opportunities.",
-      prize: "$500",
-      participants: "500+",
-      deadline: "March 15, 2025",
-      status: "Open",
-      featured: true
-    }
-  ];
-
-
-  return (
-    <section id="competition" className="py-20 bg-secondary/10 relative overflow-hidden">
+  const competitions = [{
+    title: "Global Startup Pitch Challenge 2025",
+    description: "Present your innovative business idea to a panel of leading investors and industry experts. Win funding and mentorship opportunities.",
+    prize: "$500",
+    participants: "500+",
+    deadline: "March 15, 2025",
+    status: "Open",
+    featured: true
+  }];
+  return <section id="competition" className="py-20 bg-secondary/10 relative overflow-hidden">
       {/* Futuristic background elements */}
       <div className="absolute top-1/4 right-10 w-40 h-40 bg-accent/10 rounded-full blur-2xl animate-float"></div>
-      <div className="absolute bottom-1/4 left-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-float" style={{animationDelay: '3s'}}></div>
+      <div className="absolute bottom-1/4 left-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-float" style={{
+      animationDelay: '3s'
+    }}></div>
       
       <div className="container mx-auto px-6 relative">
         {/* Header */}
@@ -40,8 +36,7 @@ const CompetitionSection = () => {
           <h3 className="text-3xl font-display font-semibold mb-10 text-foreground">Active Competition</h3>
           <div className="flex justify-center">
             <div className="max-w-md w-full">
-            {competitions.map((competition, index) => (
-              <Card key={index} className="shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 backdrop-blur-glass border border-border/50 hover:border-primary/50 ring-2 ring-primary/50 bg-gradient-glass shadow-neon">
+            {competitions.map((competition, index) => <Card key={index} className="shadow-glass hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 backdrop-blur-glass border border-border/50 hover:border-primary/50 ring-2 ring-primary/50 bg-gradient-glass shadow-neon">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-4">
                     <Badge className="bg-gradient-primary text-primary-foreground border-0 shadow-neon backdrop-blur-sm">
@@ -66,7 +61,7 @@ const CompetitionSection = () => {
                     </div>
                     <div className="flex items-center gap-3 text-sm bg-secondary/30 p-3 rounded-lg backdrop-blur-sm">
                       <Users className="w-5 h-5 text-primary" />
-                      <span>Participants: <strong>{competition.participants}</strong></span>
+                      <span>100+ <strong>{competition.participants}</strong></span>
                     </div>
                     <div className="flex items-center gap-3 text-sm bg-secondary/30 p-3 rounded-lg backdrop-blur-sm">
                       <Calendar className="w-5 h-5 text-primary" />
@@ -74,23 +69,16 @@ const CompetitionSection = () => {
                     </div>
                   </div>
                   
-                  <Button 
-                    asChild
-                    className="w-full transition-all duration-300 bg-gradient-primary hover:shadow-neon"
-                    variant="default"
-                  >
+                  <Button asChild className="w-full transition-all duration-300 bg-gradient-primary hover:shadow-neon" variant="default">
                     <Link to="/competition">Apply Now</Link>
                   </Button>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
             </div>
           </div>
         </div>
 
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CompetitionSection;
