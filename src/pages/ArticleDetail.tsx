@@ -16,7 +16,7 @@ const ArticleDetail = () => {
         excerpt: "Learn the optimal emergency fund size based on your lifestyle and income to protect against unexpected expenses.",
         readTime: "6 min",
         category: "Personal Finance",
-        author: "Sarah Johnson",
+        author: "Wesley Ren",
         date: "March 15, 2024",
         content: `
           <h2>Why Emergency Funds Matter</h2>
@@ -52,7 +52,7 @@ const ArticleDetail = () => {
         excerpt: "Compare the two most popular debt repayment strategies and find the right approach for your situation.",
         readTime: "8 min",
         category: "Personal Finance",
-        author: "Michael Chen",
+        author: "Ian Law",
         date: "March 12, 2024",
         content: `
           <h2>Understanding Debt Repayment Strategies</h2>
@@ -99,7 +99,7 @@ const ArticleDetail = () => {
         excerpt: "Discover how this simple budgeting framework can help you allocate your income effectively.",
         readTime: "5 min",
         category: "Personal Finance",
-        author: "Emily Rodriguez",
+        author: "Wesley Ren",
         date: "March 10, 2024",
         content: `
           <h2>What is the 50/30/20 Rule?</h2>
@@ -161,7 +161,7 @@ const ArticleDetail = () => {
         excerpt: "Learn how systematic investing can help smooth out market volatility and build long-term wealth.",
         readTime: "7 min",
         category: "Investment Strategies",
-        author: "David Kim",
+        author: "Ian Law",
         date: "March 14, 2024",
         content: `
           <h2>What is Dollar-Cost Averaging?</h2>
@@ -210,7 +210,7 @@ const ArticleDetail = () => {
         excerpt: "Comprehensive comparison of passive and active investment strategies with real performance data.",
         readTime: "10 min",
         category: "Investment Strategies",
-        author: "Lisa Wang",
+        author: "Wesley Ren",
         date: "March 11, 2024",
         content: `
           <h2>Understanding the Fundamental Difference</h2>
@@ -272,7 +272,7 @@ const ArticleDetail = () => {
         excerpt: "Explore how dividend-paying stocks can provide steady income and long-term growth potential.",
         readTime: "8 min",
         category: "Investment Strategies",
-        author: "Robert Thompson",
+        author: "Ian Law",
         date: "March 8, 2024",
         content: `
           <h2>Understanding Dividend Investing</h2>
@@ -352,7 +352,7 @@ const ArticleDetail = () => {
         excerpt: "Everything you need to know about buying your first home, from pre-approval to closing.",
         readTime: "12 min",
         category: "Real Estate",
-        author: "Jennifer Adams",
+        author: "Wesley Ren",
         date: "March 13, 2024",
         content: `
           <h2>Getting Started: Financial Preparation</h2>
@@ -454,7 +454,7 @@ const ArticleDetail = () => {
         excerpt: "Compare real estate investment trusts with direct property ownership for your portfolio.",
         readTime: "9 min",
         category: "Real Estate",
-        author: "Mark Stevens",
+        author: "Ian Law",
         date: "March 9, 2024",
         content: `
           <h2>Understanding Your Real Estate Investment Options</h2>
@@ -563,7 +563,7 @@ const ArticleDetail = () => {
         excerpt: "Key indicators and trends shaping the real estate market this year and beyond.",
         readTime: "7 min",
         category: "Real Estate",
-        author: "Amanda Foster",
+        author: "Wesley Ren",
         date: "March 6, 2024",
         content: `
           <h2>The Current Real Estate Landscape</h2>
@@ -689,7 +689,7 @@ const ArticleDetail = () => {
         excerpt: "Strategic approaches to get the most from your employer's retirement benefits.",
         readTime: "6 min",
         category: "Retirement Planning",
-        author: "Thomas Wilson",
+        author: "Ian Law",
         date: "March 7, 2024",
         content: `
           <h2>Understanding Your 401(k) Benefits</h2>
@@ -819,7 +819,7 @@ const ArticleDetail = () => {
         excerpt: "Understand the tax implications and choose the right retirement account for your situation.",
         readTime: "8 min",
         category: "Retirement Planning",
-        author: "Rachel Martinez",
+        author: "Wesley Ren",
         date: "March 5, 2024",
         content: `
           <h2>IRA Basics: Your Personal Retirement Account</h2>
@@ -966,7 +966,7 @@ const ArticleDetail = () => {
         excerpt: "Proven methods for withdrawing retirement funds to maximize longevity and minimize taxes.",
         readTime: "10 min",
         category: "Retirement Planning",
-        author: "Dr. Patricia Chen",
+        author: "Ian Law",
         date: "March 3, 2024",
         content: `
           <h2>The Critical Importance of Withdrawal Strategy</h2>
@@ -1145,7 +1145,7 @@ const ArticleDetail = () => {
         excerpt: "Step-by-step guide to boosting your credit score and maintaining excellent credit health.",
         readTime: "7 min",
         category: "Credit & Banking",
-        author: "Kevin Park",
+        author: "Wesley Ren",
         date: "March 4, 2024",
         content: `
           <h2>Understanding Your Credit Score</h2>
@@ -1341,7 +1341,7 @@ const ArticleDetail = () => {
         excerpt: "Find the best savings accounts and strategies to grow your emergency fund faster.",
         readTime: "5 min",
         category: "Credit & Banking",
-        author: "Maria Gonzalez",
+        author: "Ian Law",
         date: "March 2, 2024",
         content: `
           <h2>The Power of High-Yield Savings</h2>
@@ -1552,7 +1552,7 @@ const ArticleDetail = () => {
         excerpt: "Master credit card churning and rewards programs to maximize benefits while avoiding debt.",
         readTime: "9 min",
         category: "Credit & Banking",
-        author: "Alexandra Kim",
+        author: "Wesley Ren",
         date: "February 28, 2024",
         content: `
           <h2>The Art and Science of Credit Card Rewards</h2>
@@ -1802,7 +1802,7 @@ const ArticleDetail = () => {
         excerpt: "Learn how market emotions drive volatility and how to make rational investment decisions.",
         readTime: "8 min",
         category: "Market Analysis",
-        author: "Dr. Robert Chen",
+        author: "Ian Law",
         date: "March 1, 2024",
         content: `
           <h2>The Psychology Behind Market Movements</h2>
@@ -2031,7 +2031,7 @@ const ArticleDetail = () => {
         excerpt: "Decode key economic metrics and their impact on different asset classes and investments.",
         readTime: "11 min",
         category: "Market Analysis",
-        author: "Elena Rodriguez",
+        author: "Wesley Ren",
         date: "February 26, 2024",
         content: `
           <h2>The Economic Dashboard: Your Guide to Market Signals</h2>
@@ -2339,7 +2339,7 @@ const ArticleDetail = () => {
         excerpt: "Advanced techniques for positioning your portfolio across different market cycles.",
         readTime: "12 min",
         category: "Market Analysis",
-        author: "James Mitchell",
+        author: "Ian Law",
         date: "February 24, 2024",
         content: `
           <h2>Understanding Sector Rotation</h2>
