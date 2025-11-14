@@ -14,17 +14,17 @@ const FinanceTopics = () => {
       description: "Master your personal financial journey",
       articles: [
         {
-          title: "Emergency Fund Essentials: How Much You Really Need",
+          title: "Wesley's Emergency Fund Essentials: How Much You Really Need",
           excerpt: "Learn the optimal emergency fund size based on your lifestyle and income to protect against unexpected expenses.",
           readTime: "6 min"
         },
         {
-          title: "Debt Avalanche vs. Debt Snowball: Which Strategy Works?",
+          title: "Ian's Guide: Debt Avalanche vs. Debt Snowball",
           excerpt: "Compare the two most popular debt repayment strategies and find the right approach for your situation.",
           readTime: "8 min"
         },
         {
-          title: "The 50/30/20 Rule: Budgeting Made Simple",
+          title: "Wesley's 50/30/20 Rule: Budgeting Made Simple",
           excerpt: "Discover how this simple budgeting framework can help you allocate your income effectively.",
           readTime: "5 min"
         }
@@ -36,17 +36,17 @@ const FinanceTopics = () => {
       description: "Build wealth through smart investing",
       articles: [
         {
-          title: "Dollar-Cost Averaging: Reducing Investment Risk",
+          title: "Ian's Dollar-Cost Averaging Strategy",
           excerpt: "Learn how systematic investing can help smooth out market volatility and build long-term wealth.",
           readTime: "7 min"
         },
         {
-          title: "Index Funds vs. Active Funds: Performance Analysis",
+          title: "Wesley's Index Funds vs. Active Funds Analysis",
           excerpt: "Comprehensive comparison of passive and active investment strategies with real performance data.",
           readTime: "10 min"
         },
         {
-          title: "Dividend Investing: Building Passive Income Streams",
+          title: "Ian's Dividend Investing: Building Passive Income",
           excerpt: "Explore how dividend-paying stocks can provide steady income and long-term growth potential.",
           readTime: "8 min"
         }
@@ -58,17 +58,17 @@ const FinanceTopics = () => {
       description: "Navigate the property investment landscape",
       articles: [
         {
-          title: "First-Time Homebuyer's Complete Guide 2025",
+          title: "Wesley's First-Time Homebuyer's Complete Guide 2025",
           excerpt: "Everything you need to know about buying your first home, from pre-approval to closing.",
           readTime: "12 min"
         },
         {
-          title: "REITs vs. Direct Property Investment: Pros and Cons",
+          title: "Ian's REITs vs. Direct Property Investment Guide",
           excerpt: "Compare real estate investment trusts with direct property ownership for your portfolio.",
           readTime: "9 min"
         },
         {
-          title: "Real Estate Market Trends: What to Watch in 2025",
+          title: "Wesley's Real Estate Market Trends 2025",
           excerpt: "Key indicators and trends shaping the real estate market this year and beyond.",
           readTime: "7 min"
         }
@@ -80,17 +80,17 @@ const FinanceTopics = () => {
       description: "Secure your financial future",
       articles: [
         {
-          title: "401(k) Optimization: Maximizing Employer Matching",
+          title: "Ian's 401(k) Optimization: Maximizing Employer Matching",
           excerpt: "Strategic approaches to get the most from your employer's retirement benefits.",
           readTime: "6 min"
         },
         {
-          title: "Roth IRA vs. Traditional IRA: Tax Strategy Guide",
+          title: "Wesley's Roth IRA vs. Traditional IRA Tax Strategy",
           excerpt: "Understand the tax implications and choose the right retirement account for your situation.",
           readTime: "8 min"
         },
         {
-          title: "Retirement Withdrawal Strategies: Making Your Money Last",
+          title: "Ian's Retirement Withdrawal Strategies",
           excerpt: "Proven methods for withdrawing retirement funds to maximize longevity and minimize taxes.",
           readTime: "10 min"
         }
@@ -102,17 +102,17 @@ const FinanceTopics = () => {
       description: "Optimize your banking and credit",
       articles: [
         {
-          title: "Credit Score Improvement: Proven Strategies That Work",
+          title: "Wesley's Credit Score Improvement Strategies",
           excerpt: "Step-by-step guide to boosting your credit score and maintaining excellent credit health.",
           readTime: "7 min"
         },
         {
-          title: "High-Yield Savings Accounts: Maximizing Your Returns",
+          title: "Ian's Guide to High-Yield Savings Accounts",
           excerpt: "Find the best savings accounts and strategies to grow your emergency fund faster.",
           readTime: "5 min"
         },
         {
-          title: "Credit Card Rewards Optimization: Advanced Strategies",
+          title: "Wesley's Credit Card Rewards Optimization",
           excerpt: "Master credit card churning and rewards programs to maximize benefits while avoiding debt.",
           readTime: "9 min"
         }
@@ -124,17 +124,17 @@ const FinanceTopics = () => {
       description: "Stay informed on market trends",
       articles: [
         {
-          title: "Understanding Market Volatility: Investor Psychology",
+          title: "Ian's Guide: Understanding Market Volatility",
           excerpt: "Learn how market emotions drive volatility and how to make rational investment decisions.",
           readTime: "8 min"
         },
         {
-          title: "Economic Indicators: What They Mean for Your Portfolio",
+          title: "Wesley's Economic Indicators Guide",
           excerpt: "Decode key economic metrics and their impact on different asset classes and investments.",
           readTime: "11 min"
         },
         {
-          title: "Sector Rotation Strategies: Timing the Market Cycles",
+          title: "Ian's Sector Rotation Strategies",
           excerpt: "Advanced techniques for positioning your portfolio across different market cycles.",
           readTime: "12 min"
         }
